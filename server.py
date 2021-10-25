@@ -5,10 +5,15 @@ import csv
 app = Flask(__name__)
 print(__name__)
 
+@app.route('/')
+def my_home():
+    return render_template('index.html')
+
 
 @app.route("/<string:page_name>")
 def html_page(page_name=None):
     return render_template(page_name)
+
 
 def write_to_file(data):
     with open('database.txt', mode='a') as database:
